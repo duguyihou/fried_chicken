@@ -1,9 +1,7 @@
-use actix_web::{get, web, HttpResponse, Responder};
+use actix_web::web;
 
-#[get("/")]
-async fn hi() -> impl Responder {
-    HttpResponse::Ok().body("hi user")
-}
-pub fn route(cfg: &mut web::ServiceConfig) {
-    cfg.service(web::scope("/user").service(hi));
+mod controller;
+
+pub fn module(cfg: &mut web::ServiceConfig) {
+    cfg.service(web::scope("/user").service(controller::find_all_users));
 }
