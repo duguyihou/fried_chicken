@@ -1,7 +1,8 @@
 use actix_web::web;
 
-mod controller;
+mod handler;
+mod model;
 
 pub fn module(cfg: &mut web::ServiceConfig) {
-    cfg.service(web::scope("/user").service(controller::find_all_users));
+    cfg.service(web::scope("/user").service(handler::find_all_users));
 }
